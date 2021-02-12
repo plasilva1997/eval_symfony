@@ -16,6 +16,22 @@ use Symfony\Component\HttpFoundation\Request;
 
 class CategorieController extends AbstractController
 {
+
+    /**
+     * @Route("/categorieshow", name="categories_show")
+     * @param CategorieRepository $categorieRepository
+     * @return Response
+     */
+    public function showActeurAction(CategorieRepository $categorieRepository): Response
+    {
+
+        $categorie = new Categorie();
+        $categorie = $categorieRepository->findAll();
+        return $this->render('categorie/index.html.twig', [
+            'categorie' => $categorie,
+        ]);
+    }
+
     private $jsonCircularSerializer;
     private $manager;
 

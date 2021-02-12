@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Acteurs {% endblock %}
+
+{% block body %}
+    {% for acteur in acteur %}
+
+            <li>On peut trouver {{ acteur.nom }} dans les films suivants : <br><br>
+        {% for film in film %}
+                <a href="/filmshow/{{ film.id }}"> {{ film.nom }}</a><br>
+        {% endfor %}
+            </li><br>
+
+    {% endfor %}
+{% endblock %}

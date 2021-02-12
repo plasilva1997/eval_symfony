@@ -15,6 +15,26 @@ use Symfony\Component\HttpFoundation\Response;
 
 class FilmController extends AbstractController
 {
+
+    /**
+     * @Route("/filmshow/{id}", name="film_show")
+     * @param CategorieRepository $categorieRepository
+     * @param FilmRepository $filmRepository
+     * @param int $id
+     * @return Response
+     */
+    public function showActeurAction(CategorieRepository $categorieRepository, FilmRepository $filmRepository, $id = 0): Response
+    {
+
+        $film = new Film();
+        $film = $filmRepository->findAll();
+        $categorie = $categorieRepository->findAll();
+        return $this->render('film/index.html.twig', [
+            'categorie' => $categorie,
+            'film' => $film,
+        ]);
+    }
+
     private $jsonCircularSerializer;
     private $manager;
 

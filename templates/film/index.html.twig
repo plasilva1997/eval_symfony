@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categories {% endblock %}
+
+{% block body %}
+    {% for categorie in categorie %}
+        <li> les films de la categorie {{ categorie.nom }} sont <br>
+    {% for film in film %}
+
+            <a href="/acteurshow/{{ film.id }}"> {{ film.nom }}</a><br>
+
+        </li>
+    {% endfor %}
+    {% endfor %}
+
+{% endblock %}

@@ -15,6 +15,26 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ActeurController extends AbstractController
 {
+
+    /**
+     * @Route("/acteurshow/{id}", name="acteur_show")
+     * @param ActeurRepository $acteurRepository
+     * @param FilmRepository $filmRepository
+     * @param int $id
+     * @return Response
+     */
+    public function showActeurAction(ActeurRepository $acteurRepository, FilmRepository $filmRepository, $id=0): Response
+    {
+
+        $acteur = new Acteur();
+        $acteur = $acteurRepository->findAll();
+        $film = $filmRepository->findAll();
+        return $this->render('acteur/index.html.twig', [
+            'acteur' => $acteur,
+            'film' => $film,
+        ]);
+    }
+
     private $jsonCircularSerializer;
     private $manager;
 
@@ -87,7 +107,7 @@ class ActeurController extends AbstractController
      * @return Response
      */
 
-    public function deletecoleAction(ActeurRepository $acteurRepository, $id = 0): Response
+    public function deletActeurAction(ActeurRepository $acteurRepository, $id = 0): Response
     {
         $acteur = $acteurRepository->find($id);
         $reponse = new Response();
