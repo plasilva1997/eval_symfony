@@ -77,6 +77,8 @@ class CategorieController extends AbstractController
 
     /**
      * @Route("/sup/categorie/{id}", name="sup_categorie", methods={"DELETE"})
+     * @param int $id
+     * @param CategorieRepository $categorieRepository
      * @return Response
      */
 
